@@ -26,11 +26,15 @@ function startMap() {
        } else {
          // Browser doesn't support Geolocation
          handleLocationError(false, map);
+         
        }
 
+       pos = {
+           lat: -27.4698, 
+           lng: 153.0513
+         };
        // Add in the wifi and other logos
        addFeatures(pos, map);
-
 
      }
 
@@ -40,6 +44,7 @@ function startMap() {
      function addFeatures(loc, map) {
       //  var featureArray = getFeatures(loc);
       var featureArray = getFeatures(loc);
+
       console.log(featureArray);
         // .then((res) => {
         //   var featureArray = res;
@@ -53,24 +58,39 @@ function startMap() {
       */
     function getFeatures(loc) {
 
+      console.log(loc); 
       //TODO Make an object/array of urls of the data sets to parse, then iterate
     
       var url = "./data/WiFi-dataset-Open-data.csv";
       var objArr = [];
+
+      // The urls of the data sets to use
       var urlArr = 
         ["./data/WiFi-dataset-Open-data.csv",
           "./data/Bus-Stop-locations.csv",
           "./data/FERRYTERMINAL20170713.csv",
           "./data/community-halls-information-and-locationf.csv",
           "./data/CBD-bike-racks.csv",
-          "./data/AIM---PARKS---OPEN-DATA---Public-Drinking-Fountain-Taps---DATA-TO-PUBLISH---DEC-2016.csv"
-          
+          "./data/AIM---PARKS---OPEN-DATA---Public-Drinking-Fountain-Taps---DATA-TO-PUBLISH---DEC-2016.csv",
+          "./data/Open-Data---AM---datasetparkfacilties.csv"
         ];
 
       for (var url in urlArr) {
           getFileFromURL(urlArr[url])
             .then((res) => {
               console.log('done %o',res);
+              
+              // Play with the data
+              if (res.data[url][6] = "THE GABBA") {
+                
+                //TODO make function that traverses array
+                
+                console.log(res.data[url]);
+
+                console.log(haversine(loc.lat, loc.lng, res.data[url][9], res.data[url][10]));
+              }
+              // newObj = haversine(pos.lat, pos.lng, res.data)
+              // console.log(newObj);
               objArr.push(res.data);
             });
       }
@@ -188,3 +208,17 @@ function startMap() {
      function printPos() {
        alert(getMarkerLatitude(pointMarker) + " " + getMarkerLongitude(pointMarker) + " " + season);
      }
+
+     /**
+      * Haversine forumla - calculates the distance between two lat and long points
+      */
+     function haversine() {
+       var radians = Array.prototype.map.call(arguments, function(deg) { return deg/180.0 * Math.PI; });
+       var lat1 = radians[0], lon1 = radians[1], lat2 = radians[2], lon2 = radians[3];
+       var R = 6372.8; // km
+       var dLat = lat2 - lat1;
+       var dLon = lon2 - lon1;
+       var a = Math.sin(dLat / 2) * Math.sin(dLat /2) + Math.sin(dLon / 2) * Math.sin(dLon /2) * Math.cos(lat1) * Math.cos(lat2);
+       var c = 2 * Math.asin(Math.sqrt(a));
+       return R * c;
+}
