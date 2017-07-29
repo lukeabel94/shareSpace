@@ -1,0 +1,436 @@
+#content{font-size: 100%}
+
+body {background-color: #f7f7f7; }
+
+/*h1{color: black; text-align: center; font-family: "Helvetica Neue",Arial, serif, Times; font-size: 2.5em;}*/
+
+#textbox {  margin: auto;
+  width: 25%; 
+    
+    outline:0; 
+    height:25px;
+	display: block; 
+      margin-bottom: 20px;
+  }
+#home-heading img {
+    width: 90px; 
+    background-color:#eeeeee;}
+
+#submitButton {
+    position:relative;
+}
+
+
+input[type=range] {
+    /*removes default webkit styles*/
+    -webkit-appearance: none;
+    
+    /*fix for FF unable to apply focus style bug */
+    
+    
+    /*required for proper track sizing in FF*/
+    width: 100%;
+}
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 5px;
+    background: #ddd;
+    border: none;
+    border-radius: 3px;
+}
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: black;
+    margin-top: -4px;
+}
+input[type=range]:focus {
+    outline: none;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #ccc;
+}
+
+input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 5px;
+    background: #ddd;
+    border: none;
+    border-radius: 3px;
+}
+input[type=range]::-moz-range-thumb {
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: black;
+}
+
+/*hide the outline behind the border*/
+input[type=range]:-moz-focusring{
+    outline: 1px solid white;
+    outline-offset: -1px;
+}
+
+input[type=range]::-ms-track {
+    width: 100%;
+    height: 5px;
+    
+    /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
+    background: transparent;
+    
+    /*leave room for the larger thumb to overflow with a transparent border */
+    border-color: transparent;
+    border-width:6px 0;
+
+    /*remove default tick marks*/
+    color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+    background: #777;
+    border-radius: 10px;
+}
+input[type=range]::-ms-fill-upper {
+    background: #ddd;
+    border-radius: 10px;
+}
+input[type=range]::-ms-thumb {
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: black;
+}
+input[type=range]:focus::-ms-fill-lower {
+    background: #888;
+}
+input[type=range]:focus::-ms-fill-upper {
+    background: #ccc;
+}
+
+#submitbutton {
+  display: block;
+  border-radius: 4px;
+  background-color: darkgrey;
+ 
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 25%;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin:auto;
+ 
+  
+}
+
+#submitbutton span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+#submitbutton span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+#submitbutton:hover span {
+  padding-right: 25px;
+}
+
+#submitbutton:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+#slider {
+   width: 100%;
+   background-color: #eeeeee;
+   margin-bottom: 10px;
+}
+
+#images {
+     /*margin-left: auto;
+    margin-right: auto;*/
+    position: relative;
+     
+    white-space: nowrap;
+    margin: 0 auto;
+    width: 30%;
+    text-align: center;
+    display: -webkit-flex;
+   display: flex;
+   -webkit-flex-direction: row /* works with row or column */
+   flex-direction: row;
+   -webkit-align-items: center;
+   align-items: center;
+   -webkit-justify-content: center;
+   justify-content: center;
+}
+
+
+
+/*hr {
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+}*/
+
+.plant-img {
+	max-width: 100px;
+	max-height: 100px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 150px;
+}
+
+img:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+/*The main header bar - will need the menu item in it */
+/*.headerbar{
+	
+	#gradhead {
+  		height: 100px;
+  	
+  		background: -webkit-linear-gradient(black,grey);
+        background: -o-linear-gradient(black,grey);
+        background: -moz-linear-gradient(black,grey);
+        background: linear-gradient(black,grey);
+        top: 0;
+        width: 100%;
+}
+}*/
+
+#map {
+ height: 100%;
+ width: 100%;
+ position: relative
+
+}
+
+.mapContainer {
+    height: 400px;
+}
+
+@media only screen and (max-width: 600px){
+   #images {
+    width: 80%;
+}
+
+.modalImage {
+    width: 100%;
+}
+}
+
+.logo {
+    padding-top: 5px;
+}
+
+.content {
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
+  height: 100%;
+}
+
+.slider_image {
+    margin: auto; 
+    width: 30%; 
+    padding-left: 10px;
+    padding-right: 10px;
+ }
+
+.plant-name{
+    /*font-size: 20;*/
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+}
+
+#home-heading{
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-flow: row wrap;
+	flex-flow: row wrap;
+	text-align: center;
+	font-size: 1.5em;
+	background-color:#eeeeee;
+	padding-top: 0px;
+    padding-bottom: 10px;
+	width: 100%;
+	position: relative;
+	
+}
+#home-heading p {font-size:20px; margin: auto;}
+#home-heading > * {
+	padding-right: 20px;
+    padding-left: 20px;
+	-webkit-flex: 1 100%;
+	flex: 1 100%;
+}
+
+/* The box */
+.modal{
+	display: none;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow:auto;
+	background-color: rgb(0,0,0);
+	background-color:rgba(0,0,0,0.4);
+}
+/*Content box*/
+.results_details{
+	background-color: #008B00;
+	margin: 15% auto;
+	padding: 20px;
+	width: 80%;
+    
+}
+.navbar .navbar-form .ui-autocomplete { position: absolute; cursor: default;z-index:30 !important;} 
+
+.ui-autocomplete-input {
+     z-index: 999;
+     background-color: blue;
+}
+
+footer{
+    margin-top: 20px;
+}
+
+#search {
+    display: flex;
+    flex-direction: flex-start;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+/* CLose Button*/
+.close{
+	color: #aaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.close:hover,
+.close:focus{
+	color:black;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+/*The results div box*/
+.results_item{
+	width: 100%;
+	height: 100px;
+	background: white; /* Old browsers */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#002400', endColorstr='#b4ddb4',GradientType=0 ); /* IE6-9 */
+}
+
+.navbar .nav-image{
+    vertical-align: middle;
+    height: 30px;
+    width: 30px;
+}
+
+.result-link {
+    padding: 10px;
+    text-align: center;
+}
+
+.result-modal .close-modal .lr .rl {
+  height: 75px;
+  width: 1px;
+  background-color: #2C3E50;
+  transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  /* IE 9 */
+  -webkit-transform: rotate(90deg);
+  /* Safari and Chrome */
+  z-index: 1052;
+}
+@media all and (min-width: 768px) {
+    footer {-webkit-order:3;order:3;}
+}
+
+
+.result-modal .modal-content {
+  border-radius: 0;
+  background-clip: border-box;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: none;
+  min-height: 100%;
+  padding: 100px 0;
+  text-align: center;
+}
+.result-modal .modal-content h2 {
+  margin: 0;
+  font-size: 3em;
+}
+.result-modal .modal-content img {
+  margin-bottom: 30px;
+}
+.result-modal .modal-content .item-details {
+  margin: 30px 0;
+}
+.result-modal .close-modal {
+  position: absolute;
+  width: 75px;
+  height: 75px;
+  background-color: transparent;
+  top: 25px;
+  right: 25px;
+  cursor: pointer;
+}
+.result-modal .close-modal:hover {
+  opacity: 0.3;
+}
+.result-modal .close-modal .lr {
+  height: 75px;
+  width: 1px;
+  margin-left: 35px;
+  background-color: #2C3E50;
+  transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  /* IE 9 */
+  -webkit-transform: rotate(45deg);
+  /* Safari and Chrome */
+  z-index: 1051;
+}
+.result-modal .close-modal .lr .rl {
+  height: 75px;
+  width: 1px;
+  background-color: #2C3E50;
+  transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  /* IE 9 */
+  -webkit-transform: rotate(90deg);
+  /* Safari and Chrome */
+  z-index: 1052;
+}
+.result-modal .modal-backdrop {
+  opacity: 0;
+  display: none;
+}

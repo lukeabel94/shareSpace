@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Meta Information -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" charset="utf-8">
+
+  <!-- Main CSS -->
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+
+  <!-- Map -->
+  <script src="js/map.js"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAe7fjHk9SIAi6gfrcXu43lK9nzPhM5f6s"></script>
+
+  <!-- JQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
+  <!-- JQuery UI -->
+  <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/themes/base/minified/jquery-ui.min.css"
+    type="text/css" />
+
+  <!-- Bootstrap -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css"
+  />
+
+  <!-- Other Scripts -->
+  <script src="js/rangeslider.js"></script>
+  <script src="js/navbar.js"></script>
+</head>
+
+<body>
+
+  <div class="container-lrg">
+    <div class="col-12 text-center">
+      <!-- heading -->
+      <h1 class="heading">
+        Share Space
+      </h1>
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/tinysort/2.3.6/tinysort.min.js"></script>
+
+
+
+      <div class="ctas searchDiv">
+        <h2 class="subheading">
+          Search For:
+        </h2>
+        <button onclick="startMap()">Search </button>
+      </div>
+
+      <div class="content">
+        <div class="mapContainer" id="mapContainer">
+          <div id="map"></div>
+        </div>
+
+        <input type="hidden" id="latitudebox" name="latitude">
+        <input type="hidden" id="longitudebox" name="longitude">
+
+      </div>
+    </div>
+  </div>
+
+    <!-- Footer -->
+    <footer class="panel-footer">
+      <p style="text-align: center;">ShareSpace</p>
+      <p style="text-align: center;">GovHack 2017</p>
+    </footer>
+
+    <script type="text/javascript">
+      function search(season) {
+        var request = new XMLHttpRequest;
+        var url = 'search.php';
+        var params = 'season=' + season + '&latitude=' + $("#latitudebox").val() + '&longitude=' + $("#longitudebox").val();
+        request.onreadystatechange = function () {
+          if (this.readyState == 4 && this.status == 200) {
+            // If the repones isn't empty
+            if (this.responseText.length > 0) {
+              console.log('success');
+              $("search").empty();
+
+              document.getElementById("search").innerHTML = this.response;
+              scroll();
+            } else {
+              alert("Please select a valid part of the Australian map");
+              //TODO: Reset map pin
+            }
+          }
+        }
+        request.open('GET', url + '?' + params, true);
+        request.send();
+      }
+
+      function scrollMap() {
+        $('html, body').animate({
+          scrollTop: $("#map").offset().top
+        }, 1000);
+      }
+
+      function scroll() {
+        $('html, body').animate({
+          scrollTop: $("#search").offset().top
+        }, 2000);
+      }
+    </script>
+</body>
+
+</html>
