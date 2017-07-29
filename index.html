@@ -33,8 +33,11 @@
   <script src="js/papaparse.min.js"></script>
   <script src="js/jquery.csv.min.js"></script>
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 
-  <script src="js/parseData.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/tinysort/2.3.6/tinysort.min.js"></script>
+
   
 </head>
 
@@ -42,26 +45,25 @@
 
   <div class="container-lrg">
     <div class="col-12 text-center">
+      
+      <!-- Big Scroll Div  -->
+      <div id="scroll">
       <!-- heading -->
-      <h1 class="heading">
-        Share Space
+      <h1 class="heading nunitoHead">
+       SpaceShare
       </h1>
 
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/tinysort/2.3.6/tinysort.min.js"></script>
-
-
-
       <div class="ctas searchDiv">
-        <h2 class="subheading">
-          Search For:
-        </h2>
-        <button onclick="startMap()">Search </button>
+        <h4 class="subheading nunitoBox">
+          Lorem Ipsum
+        </h4>
+      <button onclick="scroll()">Scroll </button>
+      </div>
+
       </div>
 
       <div class="content">
+        <button onclick="startMap()">Search </button>
         <div class="mapContainer" id="mapContainer">
           <div id="map"></div>
         </div>
@@ -111,7 +113,7 @@
 
       function scroll() {
         $('html, body').animate({
-          scrollTop: $("#search").offset().top
+          scrollTop: $(".content").offset().top
         }, 2000);
       }
     </script>
