@@ -31,25 +31,41 @@ function startMap() {
        // Add in the wifi and other logos
        addFeatures(pos, map);
 
+
      }
 
      /**
       * Add the feature markers to the map
       */
      function addFeatures(loc, map) {
-       var featureArray = getFeatures(loc);
-
+      //  var featureArray = getFeatures(loc);
+      var featureArray = getFeatures(loc);
        
 
      }
 
      /**
-      * Get a list of features from the database, based on the current location
+      * Get a list of features from the data, based on the current location
       * @param {*} loc 
       */
-     function getFeatures(loc){
+    function getFeatures(loc) {
+
+      //TODO Make an object/array of urls of the data sets to parse, then iterate
+    
+      var url = "./data/WiFi-dataset-Open-data.csv";
+
       
-     }
+      getFileFromURL(url)
+        .then((res) => {
+          console.log('done %o',res);
+        });
+
+      // var wifiData = Papa.parse(csv);
+      
+     
+
+    }
+
      //document.getElementById("submitbutton").onclick = function () {alert("HELLO");};
 
      function handleLocationError(browserHasGeolocation, map) {
@@ -59,6 +75,27 @@ function startMap() {
         addMarker(map.center, map);
      }
 
+     /** 
+      * Ajax request to get the a file reference from a url
+      * 
+      */
+     function getFileFromURL(url) {
+       return $.ajax({
+        type: "GET",
+        url: url,
+        dataType: "text",
+        success: function(data) {
+           return Papa.parse(data, {
+	            complete: function(results) {
+                console.log(results);
+                // Add to map
+                return results;
+	            }
+          });
+          // console.log(obj);
+        }
+     });
+     }
      //Add a marker to the specified location and map
      function addMarker(location, map){
        var marker = new google.maps.Marker({
@@ -115,20 +152,5 @@ function startMap() {
 
      //print the lat and long of the marker, as well as the season
      function printPos() {
-       var season = getSeasonInt();
        alert(getMarkerLatitude(pointMarker) + " " + getMarkerLongitude(pointMarker) + " " + season);
      }
-
-     function getSeasonInt() {
-       //the season slider element
-       // 0 = summer
-       // 1 = autumn
-       // 2 = winter
-       // 3 = spring
-
-       var season = document.getElementById('season').value;
-       return season;
-
-     }
-
-     
