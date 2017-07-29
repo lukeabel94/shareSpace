@@ -40,7 +40,7 @@ function startMap() {
      function addFeatures(loc, map) {
       //  var featureArray = getFeatures(loc);
       var featureArray = getFeatures(loc);
-       
+      console.log('features %o', featureArray);
 
      }
 
@@ -53,14 +53,20 @@ function startMap() {
       //TODO Make an object/array of urls of the data sets to parse, then iterate
     
       var url = "./data/WiFi-dataset-Open-data.csv";
+
+      var urlArr = 
+        ["./data/WiFi-dataset-Open-data.csv",
+          "./data/WiFi-dataset-Open-data.csv" 
+        ];
+
       
       return getFileFromURL(url)
         .then((res) => {
 
           console.log('done %o',res);
-          return res.data;
+          return res;
         });
-
+        
       // var wifiData = Papa.parse(csv);
       
      
@@ -80,12 +86,13 @@ function startMap() {
       * Ajax request to get the a file reference from a url
       * 
       */
-     function getFileFromURL(url) {
+     async function getFileFromURL(url) {
 
       // Get the file reference from the URL
-      return getFile(url)
+      // return getFile(url)
         // Wait to finish
-        .then((data => {
+        // .then((data) => {
+          var data = await getFile(url);
           // Return the parsed Papa data
            return Papa.parse(data, {
 	            complete: function(results) {
@@ -93,7 +100,7 @@ function startMap() {
                 return results;
 	            }
           });
-        }));
+        // });
     //    $.ajax({
     //     type: "GET",
     //     url: url,
@@ -111,7 +118,7 @@ function startMap() {
     //  });
      }
 
-     function getFile(url) {
+     async function getFile(url) {
 
       return $.ajax({
         type: "GET",
