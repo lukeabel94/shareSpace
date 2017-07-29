@@ -40,8 +40,11 @@ function startMap() {
      function addFeatures(loc, map) {
       //  var featureArray = getFeatures(loc);
       var featureArray = getFeatures(loc);
-      console.log('features %o', featureArray);
-
+      console.log(featureArray);
+        // .then((res) => {
+        //   var featureArray = res;
+        //   console.log('features %o', featureArray);
+        // })
      }
 
      /**
@@ -53,19 +56,31 @@ function startMap() {
       //TODO Make an object/array of urls of the data sets to parse, then iterate
     
       var url = "./data/WiFi-dataset-Open-data.csv";
-
+      var objArr = [];
       var urlArr = 
         ["./data/WiFi-dataset-Open-data.csv",
-          "./data/WiFi-dataset-Open-data.csv" 
+          "./data/Bus-Stop-locations.csv",
+          "./data/FERRYTERMINAL20170713.csv",
+          "./data/community-halls-information-and-locationf.csv",
+          "./data/CBD-bike-racks.csv",
+          "./data/AIM---PARKS---OPEN-DATA---Public-Drinking-Fountain-Taps---DATA-TO-PUBLISH---DEC-2016.csv"
+          
         ];
 
-      
-      return getFileFromURL(url)
-        .then((res) => {
-
-          console.log('done %o',res);
-          return res;
-        });
+      for (var url in urlArr) {
+          getFileFromURL(urlArr[url])
+            .then((res) => {
+              console.log('done %o',res);
+              objArr.push(res.data);
+            });
+      }
+    
+      return objArr;
+      // return getFileFromURL(url)
+      //   .then((res) => {
+      //     console.log('done %o',res);
+      //     return res;
+      //   });
         
       // var wifiData = Papa.parse(csv);
       
@@ -89,37 +104,22 @@ function startMap() {
      async function getFileFromURL(url) {
 
       // Get the file reference from the URL
-      // return getFile(url)
-        // Wait to finish
-        // .then((data) => {
-          var data = await getFile(url);
-          // Return the parsed Papa data
-           return Papa.parse(data, {
-	            complete: function(results) {
-                console.log(results);
-                return results;
-	            }
-          });
-        // });
-    //    $.ajax({
-    //     type: "GET",
-    //     url: url,
-    //     dataType: "text",
-    //     success: function(data) {
-    //        return Papa.parse(data, {
-	  //           complete: function(results) {
-    //             console.log(results);
-    //             // Add to map
-    //             return results;
-	  //           }
-    //       });
-    //       // console.log(obj);
-    //     }
-    //  });
+      var data = await getFile(url);
+
+      // Return the parsed Papa data
+        return Papa.parse(data, {
+          complete: function(results) {
+            return results;
+          }
+      });
+
      }
 
+     /**
+      * Use ajax to get a file reference based on a url
+      * @param {*} url 
+      */
      async function getFile(url) {
-
       return $.ajax({
         type: "GET",
         url: url,
