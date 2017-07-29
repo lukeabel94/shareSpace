@@ -1,30 +1,25 @@
 <?php
-function connect() {
-$host = "localhost";
-$user = "postgres";
-$pass = "fabregas94";
-$db = "postgres";
-$port = 5432;
-$charset = 'utf8';
 
-/* OPTIONS
-$opt = [
-    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    PDO::ATTR_EMULATE_PREPARES   => false,
-];
-*/
+class MySQLDatabase{
+var $link;
 
-$dsn = "pgsql:host=$host;dbname=$db";
-
-try {
-    $pdo = new PDO($dsn, $user, $pass);
-} catch (PDOException $e) {
-    echo 'Connection failed: ' . $e->getMessage();
+function connect($user, $password, $database){
+	$this->link = mysqli_connect('localhost', $user, $password) ;
+	if(!$this->link){
+		die('Not connected : ' . mysqli_error());
+	}
+	$db = mysqli_select_db($this->link, $database);
+	if(!$db){
+		die ('Cannot use : ' . mysqli_error());
+	}
+	return $this->link;
 }
-
-return $pdo;
+function disconnect(){
+	mysqli_close($this->link);
 }
 
 
- ?>
+
+
+}
+?>

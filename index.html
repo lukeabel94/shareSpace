@@ -75,7 +75,7 @@
       function search(season) {
         var request = new XMLHttpRequest;
         var url = 'search.php';
-        var params = 'season=' + season + '&latitude=' + $("#latitudebox").val() + '&longitude=' + $("#longitudebox").val();
+        var params = '&latitude=' + $("#latitudebox").val() + '&longitude=' + $("#longitudebox").val();
         request.onreadystatechange = function () {
           if (this.readyState == 4 && this.status == 200) {
             // If the repones isn't empty

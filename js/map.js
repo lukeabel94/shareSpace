@@ -39,6 +39,8 @@ function startMap() {
      function addFeatures(loc, map) {
        var featureArray = getFeatures(loc);
 
+       
+
      }
 
      /**
@@ -46,7 +48,7 @@ function startMap() {
       * @param {*} loc 
       */
      function getFeatures(loc){
-
+      
      }
      //document.getElementById("submitbutton").onclick = function () {alert("HELLO");};
 
