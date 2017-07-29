@@ -53,11 +53,12 @@ function startMap() {
       //TODO Make an object/array of urls of the data sets to parse, then iterate
     
       var url = "./data/WiFi-dataset-Open-data.csv";
-
       
-      getFileFromURL(url)
+      return getFileFromURL(url)
         .then((res) => {
+
           console.log('done %o',res);
+          return res.data;
         });
 
       // var wifiData = Papa.parse(csv);
@@ -80,18 +81,44 @@ function startMap() {
       * 
       */
      function getFileFromURL(url) {
-       return $.ajax({
+
+      // Get the file reference from the URL
+      return getFile(url)
+        // Wait to finish
+        .then((data => {
+          // Return the parsed Papa data
+           return Papa.parse(data, {
+	            complete: function(results) {
+                console.log(results);
+                return results;
+	            }
+          });
+        }));
+    //    $.ajax({
+    //     type: "GET",
+    //     url: url,
+    //     dataType: "text",
+    //     success: function(data) {
+    //        return Papa.parse(data, {
+	  //           complete: function(results) {
+    //             console.log(results);
+    //             // Add to map
+    //             return results;
+	  //           }
+    //       });
+    //       // console.log(obj);
+    //     }
+    //  });
+     }
+
+     function getFile(url) {
+
+      return $.ajax({
         type: "GET",
         url: url,
         dataType: "text",
         success: function(data) {
-           return Papa.parse(data, {
-	            complete: function(results) {
-                console.log(results);
-                // Add to map
-                return results;
-	            }
-          });
+          return data;
           // console.log(obj);
         }
      });
