@@ -19,7 +19,7 @@ function startMap() {
              lng: position.coords.longitude
            };
            map.setCenter(pos);
-           addMarker(pos,map);
+           addMarker(pos,map, 'position');
          }, function() {;
            handleLocationError(true, map);
          });
@@ -41,10 +41,11 @@ function startMap() {
      /**
       * Add the feature markers to the map
       */
-     function addFeatures(loc, map) {
+     async function addFeatures(loc, map) {
       //  var featureArray = getFeatures(loc);
-      var featureArray = getFeatures(loc);
+      var featureArray = await getFeatures(loc, map);
 
+      console.log("feat array");
       console.log(featureArray);
         // .then((res) => {
         //   var featureArray = res;
@@ -56,7 +57,7 @@ function startMap() {
       * Get a list of features from the data, based on the current location
       * @param {*} loc 
       */
-    function getFeatures(loc) {
+    async function getFeatures(loc, map) {
 
       console.log(loc); 
       //TODO Make an object/array of urls of the data sets to parse, then iterate
@@ -83,8 +84,12 @@ function startMap() {
               console.log('done %o',res);
               
               let arr = res.data
+              
+              var objArr = [];
+              var filteredObjArr = [];
 
-              let filteredObj = {};
+              var count = 0;
+
 
               // Play with the data
                
@@ -95,29 +100,61 @@ function startMap() {
               // start at index 1
               var key = 1;
 
+              
+
               // If lat long is within 2km, starting at the array 1
               for (key in arr) {
-                // If the distance between the current location and the current object
-                if (haversine(loc.lat, loc.lng, arr[key][latKey], arr[key][lngKey]) <= 2) {
-                  console.log('Haver Found: %o', arr[key]);
+
+                var thisLat = arr[key][latKey];
+                var thisLng = arr[key][lngKey];
+
+                // If the distance between the current location and the current object is less than 2 km
+                if (haversine(loc.lat, loc.lng, thisLat, thisLng) <= 2) {
+                  var newObj = {
+                    // type is the type gotten at this beginning of the array traversal
+                    key: count,
+                    type: 'testType',
+                    details: arr[key]
+                  };
+
+                  count ++;
+
+                  // the location as an object - after converting to numbers
+                  var location = {
+                    lat: parseFloat(thisLat),
+                    lng: parseFloat(thisLng)
+                  };
+
+                  // Add the object the the array
+                  filteredObjArr.push(newObj);
+
+                  // console.log('LOCATION %o', location);
+                  // Add a marker
+                  addCustomMarker(location, map, newObj.key);
+
+                  
+                  // If at the end
+
                 } else {
+                  // Next
                 }
-              }
-              console.log('done');
-
-
-              if (res.data[url][6] = "THE GABBA") {
-                
-                //TODO make function that traverses array
-                
-                console.log(res.data[url]);
               }
               // newObj = haversine(pos.lat, pos.lng, res.data)
               // console.log(newObj);
-              objArr.push(res.data);
+
+              // Add the markers - reset filteredObjArr
+              console.log (filteredObjArr);
+              
+              
+              objArr.push(filteredObjArr);
+              
+              filteredObjArr = [];
+
+              console.log ('DONE THIS ONE');
             });
       }
     
+      console.log('return arr');
       return objArr;
       // return getFileFromURL(url)
       //   .then((res) => {
@@ -174,16 +211,30 @@ function startMap() {
      });
      }
      //Add a marker to the specified location and map
-     function addMarker(location, map){
+     function addMarker(location, map, key){
        var marker = new google.maps.Marker({
          position: location,
          map: map,
          draggable:true,
-         id: 'plantMarker'
+         id: key
        });
        updateCoords(marker);
        marker.addListener('dragend', dragMarkerEvent);
        pointMarker = marker;
+     }
+
+     function addCustomMarker(location, map, key) {
+       if(key < 10) {
+       console.log('marker location: %o, %o', location, key);
+       var marker = new google.maps.Marker({
+         position: location,
+         map: map
+        //  label: key,
+        //  id: key
+       });
+
+       console.log('HERE IS THE MARKER %o', marker);
+       }
      }
 
      //Update the hidden coordinate boxes
@@ -261,4 +312,11 @@ function startMap() {
                   return key;
                 }
               } 
+  }
+
+  /**
+   * Get the title of the dataset
+   */
+  function getDataSetTitle() {
+
   }
