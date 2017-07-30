@@ -25,13 +25,56 @@ body{
     line-height: 35px;
 }
 
-/* Input styling */
+/* Form styling */
+form label{
+    color: #FFF;
+}
 input{
     background: none;
     border: none;
     border-bottom: 3px solid white;
     padding-bottom: 2px;
+    caret-color: #FFF;
 }
+::-webkit-input-placeholder, ::-webkit-datetime-edit { /* Chrome/Opera/Safari */
+  color: rgba(255,255,255,0.5);
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: rgba(255,255,255,0.5);
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: rgba(255,255,255,0.5);
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: rgba(255,255,255,0.5);
+}
+
+::-webkit-inner-spin-button { 
+    display: none;
+}
+
+input[type="date"]::-webkit-clear-button {
+    display: none;
+}
+::-webkit-calendar-picker-indicator:hover {
+    background: none;
+}
+
+
 input:focus{
     outline: none;
+}
+
+.event-submit{
+
+    border: 3px solid rgba(255,255,255,0);
+    margin: 10px;
+    width: 150px;
+    background-color: rgba(255,255,255,1);
+    transition: .1s all ease-in-out;
+}
+.event-submit:hover{
+    background-color: rgba(255,255,255,0);
+    border: 3px solid rgba(255,255,255,1);
+    color: #FFF;
 }
