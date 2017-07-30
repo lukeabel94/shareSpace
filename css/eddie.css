@@ -95,6 +95,14 @@ input:focus{
     color: #FFF;
 }
 
+
+#typeOfVenue{
+    width: auto;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 /* radio styling (sounds retro haha)*/
 input[type=checkbox]{
 	position:absolute;
@@ -103,6 +111,7 @@ input[type=checkbox]{
 
 label.venues{
     font-size: 12px;
+    margin-right: 12px;
    	padding: 3px 10px;
    	color: #444;
    	text-align: center;
@@ -115,8 +124,7 @@ label.venues{
 }
 
 input[type=checkbox]:checked+label.venues{
-	color: #444;
-	width: 200px;
+	color: #FFF;
 	text-align: center;
 	border: 1px solid #FFF;
 	background-color: #FFC3FC;
