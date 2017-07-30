@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,63 +9,73 @@
     <link rel="stylesheet" href="css/eddie.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div id="filter-component">
-        <!-- Text that just says "filter'" -->
-        <div id="filter-head">
-            <div class="filter-head-content">
-                <p>Filter</p>
-            <p>X</p>
-            </div>
-            
-        </div>
+        <div class="filter-content-wrap">
+            <!-- Text that just says "filter'" -->
+            <div id="filter-head">
+                <div class="filter-head-content clearfix">
+                    <p id="filter-title">Filter</p>
+                    <p id="filter-close">X</p>
+                </div>
 
-        <!-- Nearby Infrastructure  -->
-        <div id="filter-near">
-            <!-- WIFI  -->
-            <div class="infra-div">
-                <svg></svg>
-                <span></span>
             </div>
 
-            <!-- BUS STOPS  -->
-            <div class="infra-div">
-                <svg></svg>
-                <span></span>
+            <!-- Nearby Infrastructure  -->
+            <div id="filter-near" class="clearfix">
+
+                <!-- WIFI  -->
+                <div class="infra-div">
+                    <img src="assets/Artboard 40.png" alt="WIFI">
+                    <br>
+                    <span>Wifi</span>
+                </div>
+
+                <!-- BUS STOPS  -->
+                <div class="infra-div">
+                    <img src="assets/Artboard 90.png" alt="Bus Stops">
+                    <br>
+                    <span>Bus Stops</span>
+                </div>
+
+                <!-- CITY CATS  -->
+                <div class="infra-div">
+                    <img src="assets/Artboard 80.png" alt="City Cats">
+                    <br>
+                    <span>CityCats</span>
+                </div>
+
+                <!-- WATER TAPS  -->
+                <div class="infra-div">
+                    <img src="assets/Artboard 70.png" alt="Water Taps">
+                    <br>
+                    <span>Water Taps</span>
+                </div>
+
+                <!-- CITY CYCLES  -->
+                <div class="infra-div">
+                    <img src="assets/Artboard 20.png" alt="City Cycles">
+                    <br>
+                    <span>Bike Racks</span>
+                </div>
             </div>
 
-            <!-- CITY CATS  -->
-            <div class="infra-div">
-                <svg></svg>
-                <span></span>
-            </div>
+            <div id="typeOfVenue">
+                <input type="checkbox" id="hall">
+                <label for="hall" class="venues">Community hall</label>
 
-            <!-- WATER TAPS  -->
-            <div class="infra-div">
-                <svg></svg>
-                <span></span>
-            </div>
+                <input type="checkbox" id="garden">
+                <label for="garden" class="venues">Community garden</label>
 
-            <!-- CITY CYCLES  -->
-            <div class="infra-div">
-                <svg></svg>
-                <span></span>
-            </div>
-        </div>
+                <input type="checkbox" id="library">
+                <label for="library" class="venues">Library</label>
 
-        <div id="typeOfVenue">
-            <input type="checkbox" id="hall">
-            <label for="hall" class="venues">Community hall</label>
-            
-            <input type="checkbox" id="garden">
-            <label for="garden" class="venues">Community garden</label>
-        
-            <input type="checkbox" id="library">
-            <label for="library" class="venues">Library</label>
-            
-            <input type="checkbox" id="park">
-            <label for="park" class="venues">Park</label>
+                <input type="checkbox" id="park">
+                <label for="park" class="venues">Park</label>
+            </div>
         </div>
     </div>
 </body>
+
 </html>

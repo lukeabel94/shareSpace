@@ -8,6 +8,8 @@ body{
     background-image:linear-gradient(60deg, #FFC3FC, #6AB2FC);
     height: 100%;
     font-family: 'Nunito Sans', sans-serif;
+    padding: 0;
+    margin: 0;
 }
 .main-wrap{
     width: 100%;
@@ -98,7 +100,7 @@ input:focus{
 
 #typeOfVenue{
     width: auto;
-    margin: 0 auto;
+    margin: 30px auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -132,18 +134,54 @@ input[type=checkbox]:checked+label.venues{
 	cursor: pointer;
 	transition: background-color .2s;
 }
+#filter-near{
+    margin: 0 auto;
+}
 
+#filter-near>div{
+    float: left;
+}
+.clearfix::after{
+    content: '';
+    clear: both;
+    visibility: hidden;
+    display: block;
+    height: 0;
+}
+.infra-div{
+    width:20%;
+    text-align: center;
+    font-size: 12px;
+}
+.infra-div img{
+    width: 70px;
+    height: 70px;
+}
 
+.filter-content-wrap{
+    padding: 20px;
+}
+.filter-content-wrap>div{
+    border-bottom: 1px solid #CCCCCC;
+    padding: 20px 0px;
+}
 
 #filter-component{
-    width:400px;
+    width:500px;
     height: 100%;
-    margin: 0;
+    margin: 0px;
+    top: 0px; left: 0px;
     background-color: #FFF;
 }
-#filter-head{
-
-    height: 80px;
+#filter-component p{
+    margin: 0;
+}
+#filter-title{
+    float: left;
+}
+#filter-close{
+    float: right;
+    cursor: pointer;
 }
 .booking-container{
     background-color: rgba(255, 255, 255, 0.9);
@@ -153,7 +191,7 @@ input[type=checkbox]:checked+label.venues{
     color: #444;    
     font-family: 'Nunito Sans', sans-serif;
 
-}
+} 
 
 .booking-container label{
     color: #444;
