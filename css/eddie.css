@@ -1,8 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito+Sans:300,400');
 
 html{
-    height: 100% !important;
-    width: 100% !important;
+    height: 100%;
 }
 
 body{
@@ -83,7 +82,7 @@ input:focus{
 
 .event-submit{
     border: 3px solid rgba(255,255,255,0);
-    border-radius: 3px;
+    border-radius: 30px;
     margin: 10px;
     width: 150px;
     background-color: rgba(255,255,255,1);
@@ -96,43 +95,54 @@ input:focus{
     color: #FFF;
 }
 
+
+#typeOfVenue{
+    width: auto;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 /* radio styling (sounds retro haha)*/
 input[type=checkbox]{
 	position:absolute;
 	left:-9999px;
 }
-label.venues{
-	color: #FFF;
-	width: 200px;
-	padding: 10px;
-	text-align: center;
-	border: 2px solid #FFF;
-	border-radius: 3px;
-	background-color: #2B5462;
-	white-space: nowrap;
-	cursor: pointer;
-	transition: background-color .2s;
-}
 
-input[type=checkbox]:checked+label.venues{
-   	padding: 10px;
-   	color: #2B5462;
+label.venues{
+    font-size: 12px;
+    margin-right: 12px;
+   	padding: 3px 10px;
+   	color: #444;
    	text-align: center;
-   	border:2px solid #2B5462;
-   	border-radius: 3px;
+   	border:1px solid #444;
+   	border-radius: 25px;
    	background-color: #FFF;     
    	white-space: nowrap;
    	cursor: pointer;
    	transition: background-color .2s;
 }
 
+input[type=checkbox]:checked+label.venues{
+	color: #FFF;
+	text-align: center;
+	border: 1px solid #FFF;
+	background-color: #FFC3FC;
+	white-space: nowrap;
+	cursor: pointer;
+	transition: background-color .2s;
+}
+
+
+
 #filter-component{
-    width: 30%;
+    width:400px;
     height: 100%;
     margin: 0;
     background-color: #FFF;
 }
 #filter-head{
+
     height: 80px;
 }
 .booking-container{
@@ -163,9 +173,6 @@ input[type=checkbox]:checked+label.venues{
     border-radius: 4px;;
 }
 /*  Map CSS  */
-.mapContainer{
-    height: 100vh;
-}
 #map div{
     height: 100%;
     width: 100%;
@@ -174,3 +181,6 @@ input[type=checkbox]:checked+label.venues{
     top: 0; left:0;
 }
 
+#show-map{
+    height: 100%;
+}

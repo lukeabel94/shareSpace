@@ -87,8 +87,8 @@ function startMap() {
                 var thisLat = arr[key][latKey];
                 var thisLng = arr[key][lngKey];
 
-                // If the distance between the current location and the current object is less than 2 km
-                if (haversine(loc.lat, loc.lng, thisLat, thisLng) <= 1) {
+                // If the distance between the current location and the current object is less than 1.4 km
+                if (haversine(loc.lat, loc.lng, thisLat, thisLng) <= 1.4) {
                   var newObj = {
                     // type is the type gotten at this beginning of the array traversal
                     key: count,

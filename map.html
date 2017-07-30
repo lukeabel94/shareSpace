@@ -46,7 +46,7 @@
     </style>
 </head>
 
-<body>
+<body> 
 
     <div id="gradient" class="bg-img"></div>
     <div class="container-lrg max-height">
@@ -70,9 +70,9 @@
 
             <div class="content" id="show-map">
                 <!-- <button onclick="startMap()">Search </button> -->
-                <div class="mapContainer" id="mapContainer">
+                 <div class="mapContainer" id="mapContainer"> 
                     <div id="map"></div>
-                </div>
+                 </div> 
 
                 <!-- The Modal -->
                 <div id="myModal" class="modal">
@@ -111,7 +111,6 @@
 
                 </div>
 
-
                 <input type="hidden" id="latitudebox" name="latitude">
                 <input type="hidden" id="longitudebox" name="longitude">
 
@@ -120,29 +119,6 @@
     </div>
 
     <script type="text/javascript">
-        
-        function search(season) {
-            var request = new XMLHttpRequest;
-            var url = 'search.php';
-            var params = '&latitude=' + $("#latitudebox").val() + '&longitude=' + $("#longitudebox").val();
-            request.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    // If the repones isn't empty
-                    if (this.responseText.length > 0) {
-                        console.log('success');
-                        $("search").empty();
-
-                        document.getElementById("search").innerHTML = this.response;
-                        scroll();
-                    } else {
-                        alert("Please select a valid part of the Australian map");
-                        //TODO: Reset map pin
-                    }
-                }
-            }
-            request.open('GET', url + '?' + params, true);
-            request.send();
-        }
 
         function scrollMap() {
             $('html, body').animate({
@@ -183,7 +159,19 @@
             grad.style.display = "none";
         }
     }
-    </script>
+</script>
+
+<script>
+function openNav() {
+    document.getElementById("filter-component").style.width = "250px";
+    document.getElementById("show-map").style.marginLeft = "250px";
+}
+
+function closeNav() {
+    document.getElementById("filter-component").style.width = "0";
+    document.getElementById("show-map").style.marginLeft= "0";
+}
+</script>
 </body>
 
 </html>
