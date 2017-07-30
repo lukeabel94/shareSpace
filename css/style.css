@@ -2,9 +2,8 @@
 
 #content{font-size: 100%}
 
-body {background-color: #f7f7f7; }
-
-/*h1{color: black; text-align: center; font-family: "Helvetica Neue",Arial, serif, Times; font-size: 2.5em;}*/
+body {background-color: #f7f7f7; font-family: 'Nunito Sans', sans-serif; !important }
+    
 
 #textbox {  margin: auto;
   width: 25%; 
@@ -127,8 +126,6 @@ input[type=range]:focus::-ms-fill-upper {
   transition: all 0.5s;
   cursor: pointer;
   margin:auto;
- 
-  
 }
 
 #submitbutton span {
@@ -239,28 +236,49 @@ img:hover {
 }*/
 
 /* The Modal (background) */
+#myModal{
+    font-family: 'Nunito Sans' !important; 
+}
 .modal {
-    display: none; /* Hidden by default */
+    font-family: 'Nunito Sans' !important; 
+    display: flex; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 2222222; /* Sit on top */
-    left: 0;
-    top: 0;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    display: -webkit-flex;
+   display: flex;
+   -webkit-align-items: center;
+   align-items: center;
+   -webkit-justify-content: center;
+   justify-content: center;
 }
 
 /* Modal Content/Box */
 .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
+    text-align: left;
+        margin: 21vh auto 0 auto;
+    font-family: 'Nunito Sans' !important; 
+    background-color: rgba(254, 254, 254, 0.9);
+    padding: 20px 4vh;
     width: 80%; /* Could be more or less, depending on screen size */
+    border-radius: 5px;
 }
-
+.modal-content h3{
+    text-align: center;
+}
+.modal-content button{
+    font-family: 'Nunito Sans' !important; 
+    background-color: #8EC5FC;
+    border: none;
+    width: 20vh;
+    height: 5vh;
+    border-radius: 5px;
+    color: white;
+}
 /* The Close Button */
 .close {
     color: #aaa;
@@ -363,7 +381,17 @@ img:hover {
 	-webkit-flex: 1 100%;
 	flex: 1 100%;
 }
-
+.booking-container{
+    width: 40px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+.booking-container button{
+    text-align: center;
+}
 /* The box */
 .modal{
 	display: none;
@@ -374,8 +402,7 @@ img:hover {
 	width: 100%;
 	height: 100%;
 	overflow:auto;
-	background-color: rgb(0,0,0);
-	background-color:rgba(0,0,0,0.4);
+	background-image: linear-gradient(60deg, rgba(255, 195, 252, 0.5), rgba(106, 178, 252, 0.5));
 }
 /*Content box*/
 .results_details{
