@@ -3,7 +3,7 @@ var pointMarker;
 function startMap() {
        map = new google.maps.Map(document.getElementById('map'), {
          center: {lat: -27.4698, lng: 153.0513},
-         zoom: 11
+         zoom: 14
        });
 
        //load geoJson info
@@ -224,17 +224,29 @@ function startMap() {
      }
 
      function addCustomMarker(location, map, key) {
-       if(key < 10) {
+      //  if(key < 10) {
        console.log('marker location: %o, %o', location, key);
+
+        var image = {
+          url: './img/icon-wifi-128.png',
+          // This marker is 20 pixels wide by 32 pixels high.
+          size: new google.maps.Size(20, 32),
+          // // The origin for this image is (0, 0).
+          origin: new google.maps.Point(0, 0),
+          // // The anchor for this image is the base of the flagpole at (0, 32).
+          anchor: new google.maps.Point(0, 32)
+        };
+
        var marker = new google.maps.Marker({
          position: location,
-         map: map
-        //  label: key,
-        //  id: key
+         map: map,
+        //  icon: image,
+        //  icon: './img/icon-wifi-128.png',
+         id: key
        });
 
        console.log('HERE IS THE MARKER %o', marker);
-       }
+      //  }
      }
 
      //Update the hidden coordinate boxes
