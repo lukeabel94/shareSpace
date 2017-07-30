@@ -258,6 +258,8 @@ function startMap() {
        if (marker.id == 'clickable') {
         marker.addListener('click', function() {
           console.log ('clicked');
+          var modal = document.getElementById('myModal');
+          modal.style.display = "block";
         });
        }
 
@@ -440,6 +442,11 @@ function startMap() {
 
       addCustomMarker(location, map, 'clickable', './assets/location-pin.png');
     }
+  }
+
+  function modalPopup() {
+    // Get the modal
     
+    console.log('modal');
 
   }
