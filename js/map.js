@@ -45,8 +45,8 @@ function startMap() {
       //  var featureArray = getFeatures(loc);
       var featureArray = await getFeatures(loc, map);
 
-      console.log("feat array");
-      console.log(featureArray);
+      // console.log("feat array");
+      // console.log(featureArray);
         // .then((res) => {
         //   var featureArray = res;
         //   console.log('features %o', featureArray);
@@ -59,7 +59,7 @@ function startMap() {
       */
     async function getFeatures(loc, map) {
 
-      console.log(loc); 
+      // console.log(loc); 
       //TODO Make an object/array of urls of the data sets to parse, then iterate
     
       var url = "./data/WiFi-dataset-Open-data.csv";
@@ -90,6 +90,7 @@ function startMap() {
 
               var count = 0;
 
+              var dataType = getDataType(arr[0]);
 
               // Play with the data
                
@@ -113,7 +114,7 @@ function startMap() {
                   var newObj = {
                     // type is the type gotten at this beginning of the array traversal
                     key: count,
-                    type: 'testType',
+                    type: dataType,
                     details: arr[key]
                   };
 
@@ -216,29 +217,38 @@ function startMap() {
      }
      //Add a marker to the specified location and map
      function addMarker(location, map, key){
+
+       var image = {
+          url: './assets/location-pin.png',
+          size: new google.maps.Size(100, 100),
+          origin: new google.maps.Point(0, 0),
+          anchor: new google.maps.Point(17, 34),
+          scaledSize: new google.maps.Size(80, 80),
+
+        };
+
        var marker = new google.maps.Marker({
          position: location,
          map: map,
-         draggable:true,
-         id: key
+         icon: image,
+         id: key,
+         zIndex: 100000
        });
-       updateCoords(marker);
-       marker.addListener('dragend', dragMarkerEvent);
        pointMarker = marker;
      }
 
      function addCustomMarker(location, map, key) {
       //  if(key < 10) {
-       console.log('marker location: %o, %o', location, key);
+      //  console.log('marker location: %o, %o', location, key);
 
        // The image for the marker
-        var image = {
-          url: './assets/bus.svg',
-          // This marker is 20 pixels wide by 32 pixels high.
-          size: new google.maps.Size(20, 32),
-          origin: new google.maps.Point(0, 0),
-          anchor: new google.maps.Point(0, 32)
-        };
+        // var image = {
+        //   url: './assets/bus.svg',
+        //   // This marker is 20 pixels wide by 32 pixels high.
+        //   size: new google.maps.Size(20, 32),
+        //   origin: new google.maps.Point(0, 0),
+        //   anchor: new google.maps.Point(0, 32)
+        // };
 
        var image = {
           url: './assets/Artboard 40.png',
@@ -256,21 +266,11 @@ function startMap() {
          id: key
        });
 
-       console.log('HERE IS THE MARKER %o', marker);
+      //  console.log('HERE IS THE MARKER %o', marker);
       //  }
      }
 
      //Update the hidden coordinate boxes
-     function updateCoords(marker) {
-       var latbox = document.getElementById("latitudebox");
-       var longbox = document.getElementById("longitudebox");
-
-       //Update the two boxes
-       latbox.value = getMarkerLatitude(marker);
-       longbox.value = getMarkerLongitude(marker);
-
-       //update city text box
-     }
 
      //Get a marker's latitude
      function getMarkerLatitude(marker) {
@@ -331,7 +331,7 @@ function startMap() {
               // For each key in the object
               for (var key in object) {
                 if (object[key].toUpperCase() == property.toUpperCase()) {
-                  console.log('key found: ' + key);
+                  // console.log('key found: ' + key);
                   return key;
                 }
               } 
@@ -349,7 +349,22 @@ function startMap() {
    * @param {Object} titleObj 
    */
   function getDataType(titleObj) {
+    console.log('getting the data type %o', titleObj);
 
+    switch(titleObj) {
+      case 'citycat':
+        return iconBase + 'Artboard 80.png';
+      case 'citycycle':
+        return iconBase + 'Artboard 20.png';
+      case 'bus':
+        return iconBase + 'Artboard 90.png';
+      case 'watertap':
+        return iconBase + 'Artboard 70.png';
+      case 'library':
+        return iconBase + '';
+      case 'wifi':
+        return iconBase + 'Artboard 40.png';
+    }
   }
 
   /**
@@ -361,17 +376,17 @@ function startMap() {
 
     switch(type) {
       case 'citycat':
-        return iconBase + 'citycat.svg';
+        return iconBase + 'Artboard 80.png';
       case 'citycycle':
-        return iconBase + 'citycycle.svg';
+        return iconBase + 'Artboard 40.png';
       case 'bus':
-        return iconBase + 'citycat.svg';
+        return iconBase + 'Artboard 60.png';
       case 'watertap':
-        return iconBase + 'citycycle.svg';
+        return iconBase + 'Artboard 70.png';
       case 'library':
-        return iconBase + 'citycat.svg';
+        return iconBase + '';
       case 'wifi':
-        return iconBase + 'citycycle.svg';
+        return iconBase + 'Artboard 90.png';
     }
 
 
