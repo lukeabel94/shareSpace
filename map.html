@@ -43,12 +43,12 @@
 
 <body>
 
-    <div class="container-lrg">
+    <div class="container-lrg max-height">
         <div class="col-12 text-center">
 
-            <!-- Big Scroll Div  -->
+             <!-- Big Scroll Div  
             <div id="scroll">
-                <!-- heading -->
+                 heading 
                 <h1 class="heading nunitoHead">
                     SpaceShare
                 </h1>
@@ -60,10 +60,10 @@
                     <button onclick="scroll()">Scroll </button>
                 </div>
 
-            </div>
+            </div> -->
 
-            <div class="content">
-                <button onclick="startMap()">Search </button>
+            <div class="content" id="show-map">
+                <!-- <button onclick="startMap()">Search </button> -->
                 <div class="mapContainer" id="mapContainer">
                     <div id="map"></div>
                 </div>
@@ -76,10 +76,10 @@
     </div>
 
     <!-- Footer -->
-    <footer class="panel-footer">
+     <footer class="panel-footer">
         <p style="text-align: center;">ShareSpace</p>
         <p style="text-align: center;">GovHack 2017</p>
-    </footer>
+    </footer> 
 
     <script type="text/javascript">
         
@@ -117,6 +117,9 @@
                 scrollTop: $(".content").offset().top
             }, 2000);
         }
+        $(document).ready(()=>{
+            startMap();
+        })
     </script>
 </body>
 
