@@ -30,12 +30,17 @@ form label{
     color: #FFF;
 }
 input{
+    color: rgb(255,255,255);
     background: none;
     border: none;
     border-bottom: 3px solid white;
     padding-bottom: 2px;
     caret-color: #FFF;
 }
+input[type="text"]{
+    color: rgb(255,255,255);
+}
+
 ::-webkit-input-placeholder, ::-webkit-datetime-edit { /* Chrome/Opera/Safari */
   color: rgba(255,255,255,0.5);
 }
@@ -66,7 +71,6 @@ input:focus{
 }
 
 .event-submit{
-
     border: 3px solid rgba(255,255,255,0);
     margin: 10px;
     width: 150px;
