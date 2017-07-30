@@ -260,6 +260,7 @@ function startMap() {
           console.log ('clicked');
           var modal = document.getElementById('myModal');
           modal.style.display = "block";
+          grad.style.display = "block";
         });
        }
 
