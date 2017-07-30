@@ -24,3 +24,14 @@ body{
 .content>p{
     line-height: 35px;
 }
+
+/* Input styling */
+input{
+    background: none;
+    border: none;
+    border-bottom: 3px solid white;
+    padding-bottom: 2px;
+}
+input:focus{
+    outline: none;
+}
