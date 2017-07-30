@@ -11,28 +11,12 @@ function startMap() {
 
        var pos;
 
-       // Try HTML5 geolocation.
-       if (navigator.geolocation) {
-         navigator.geolocation.getCurrentPosition(function(position) {
-           pos = {
-             lat: position.coords.latitude,
-             lng: position.coords.longitude
-           };
-           map.setCenter(pos);
-           addMarker(pos,map, 'position');
-         }, function() {;
-           handleLocationError(true, map);
-         });
-       } else {
-         // Browser doesn't support Geolocation
-         handleLocationError(false, map);
-         
-       }
-
        pos = {
            lat: -27.4698, 
            lng: 153.0513
          };
+
+        
        // Add in the wifi and other logos
        addFeatures(pos, map);
 
@@ -42,6 +26,8 @@ function startMap() {
       * Add the feature markers to the map
       */
      async function addFeatures(loc, map) {
+
+      addVenues();
       //  var featureArray = getFeatures(loc);
       var featureArray = await getFeatures(loc, map);
 
@@ -73,7 +59,7 @@ function startMap() {
           "./data/community-halls-information-and-locationf.csv",
           "./data/CBD-bike-racks.csv",
           // "./data/Open-Data---AM---datasetparkfacilties.csv",
-          // "./data/AIM---PARKS---OPEN-DATA---Public-Drinking-Fountain-Taps---DATA-TO-PUBLISH---DEC-2016.csv"
+          "./data/AIM---PARKS---OPEN-DATA---Public-Drinking-Fountain-Taps---DATA-TO-PUBLISH---DEC-2016.csv"
           
         ];
 
@@ -91,7 +77,7 @@ function startMap() {
               var count = 0;
 
               var dataType = getDataType(arr[0]);
-
+              console.log(dataType);
               // Play with the data
                
               // get the key of the lat and long
@@ -135,7 +121,7 @@ function startMap() {
                   // console.log('LOCATION %o', location);
                   // Add a marker
 
-                  addCustomMarker(location, map, newObj.key);
+                  addCustomMarker(location, map, newObj.key, iconURL);
 
                   
                   // If at the end
@@ -237,7 +223,7 @@ function startMap() {
        pointMarker = marker;
      }
 
-     function addCustomMarker(location, map, key) {
+     function addCustomMarker(location, map, key, url) {
       //  if(key < 10) {
       //  console.log('marker location: %o, %o', location, key);
 
@@ -251,7 +237,7 @@ function startMap() {
         // };
 
        var image = {
-          url: './assets/Artboard 40.png',
+          url: url,
           size: new google.maps.Size(71, 71),
           origin: new google.maps.Point(0, 0),
           anchor: new google.maps.Point(17, 34),
@@ -348,22 +334,26 @@ function startMap() {
    * Get the data type from the title object
    * @param {Object} titleObj 
    */
-  function getDataType(titleObj) {
-    console.log('getting the data type %o', titleObj);
+  function getDataType(titleArr) {
+    console.log('getting the data type %o', titleArr);
+    
+    var title = titleArr[0];
 
-    switch(titleObj) {
-      case 'citycat':
-        return iconBase + 'Artboard 80.png';
-      case 'citycycle':
-        return iconBase + 'Artboard 20.png';
-      case 'bus':
-        return iconBase + 'Artboard 90.png';
-      case 'watertap':
-        return iconBase + 'Artboard 70.png';
+    switch(title) {
+      case 'Wifi Hotspot Name':
+        return 'wifi';
+      case 'HASTUS_ID':
+        return 'bus';
+      case 'HASTUS':
+        return 'citycat';
+      case 'Suburb':
+        return 'citycycle';
       case 'library':
-        return iconBase + '';
-      case 'wifi':
-        return iconBase + 'Artboard 40.png';
+        return 'library';
+      case 'Ward':
+        return 'watertap';
+      default:
+        return 'clickable';
     }
   }
 
@@ -373,22 +363,29 @@ function startMap() {
   function getIconURL(type) {
     var iconBase = './assets/';
     var iconFile;
+    console.log(type);
 
     switch(type) {
       case 'citycat':
         return iconBase + 'Artboard 80.png';
       case 'citycycle':
-        return iconBase + 'Artboard 40.png';
+        return iconBase + 'Artboard 20.png';
       case 'bus':
-        return iconBase + 'Artboard 60.png';
+        return iconBase + 'Artboard 90.png';
       case 'watertap':
         return iconBase + 'Artboard 70.png';
-      case 'library':
-        return iconBase + '';
       case 'wifi':
-        return iconBase + 'Artboard 90.png';
+        return iconBase + 'Artboard 40.png';
+      case 'clickable':
+        return iconBase + 'location-pin.png';
+        
     }
+  }
 
+  /**
+   * A function to add in some bookable venues
+   */
+  function addVenues() {
 
 
   }
