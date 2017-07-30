@@ -61,8 +61,14 @@
                     <label>Date</label>
                     <input type="date" />
                     <br><br>
-                    <label>Time</label>
-                    <input type="text" name="space" placeholder="space">
+                    <label>Time slots available</label>
+                    <input list="timeslot" name="timeslot">
+                      <datalist id="timeslot">
+                        <option value="1PM - 2PM">
+                        <option value="2PM - 3PM">
+                        <option value="3PM - 4PM">
+                        <option value="4PM - 5PM">
+                      </datalist>
                     <br><br>
                     <button>
                         Book place
