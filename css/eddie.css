@@ -26,8 +26,11 @@ body{
 }
 
 /* Form styling */
-form label{
+form label, input[type="text"]{
     color: #FFF;
+    letter-spacing: .11em;
+    margin-right:.2em;
+    font-weight: 300;
 }
 input{
     color: rgb(255,255,255);

@@ -173,7 +173,7 @@ input[type=range]:focus::-ms-fill-upper {
     text-align: center;
     display: -webkit-flex;
    display: flex;
-   -webkit-flex-direction: row /* works with row or column */
+   -webkit-flex-direction: row;/* works with row or column */
    flex-direction: row;
    -webkit-align-items: center;
    align-items: center;
@@ -205,13 +205,12 @@ input[type=range]:focus::-ms-fill-upper {
 .nunitoHead {
     font-weight: 300;
 }
-
 .nunitoBody {
     font-weight: 400;
 }
 
 .nunitoLargerBody{
-    font-size: 35px;
+     font-size: 35px; 
     font-weight: 400px;
 }
 
