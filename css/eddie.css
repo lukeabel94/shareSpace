@@ -1,8 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito+Sans:300,400');
 
 html{
-    height: 100% !important;
-    width: 100% !important;
+    height: 100%;
 }
 
 body{
@@ -163,9 +162,6 @@ input[type=checkbox]:checked+label.venues{
     border-radius: 4px;;
 }
 /*  Map CSS  */
-.mapContainer{
-    height: 100vh;
-}
 #map div{
     height: 100%;
     width: 100%;
@@ -174,3 +170,6 @@ input[type=checkbox]:checked+label.venues{
     top: 0; left:0;
 }
 
+#show-map{
+    height: 100%;
+}

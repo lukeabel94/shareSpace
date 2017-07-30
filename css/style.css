@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito+Sans:300,400');
 
 #content{font-size: 100%}
-
+html{
+    height: 100% !important;
+}
 body {background-color: #f7f7f7; }
 
 /*h1{color: black; text-align: center; font-family: "Helvetica Neue",Arial, serif, Times; font-size: 2.5em;}*/
