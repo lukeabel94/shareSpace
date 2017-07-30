@@ -176,7 +176,7 @@ input[type=checkbox]:checked+label.venues{
 #filter-component p{
     margin: 0;
 }
-#filter-title{
+.filter-title{
     float: left;
 }
 #filter-close{
