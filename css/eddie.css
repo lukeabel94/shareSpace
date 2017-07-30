@@ -87,7 +87,6 @@ input:focus{
     border: 3px solid rgba(255,255,255,1);
     color: #FFF;
 }
-<<<<<<< HEAD
 
 .booking-container{
     background-color: rgba(255, 255, 255, 0.9);
@@ -127,5 +126,4 @@ input:focus{
     padding: 0;
     top: 0; left:0;
 }
-=======
->>>>>>> bdac0f0988fe40ac5bdc9755d3517d9688112b14
+
