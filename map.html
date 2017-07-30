@@ -40,19 +40,20 @@
         body {
             font-family: 'Nunito Sans';
         }
-        myModal{
+
+        myModal {
             display: flex;
         }
     </style>
 </head>
 
-<body> 
+<body>
 
     <div id="gradient" class="bg-img"></div>
     <div class="container-lrg max-height">
         <div class="col-12 text-center">
 
-             <!-- Big Scroll Div  
+            <!-- Big Scroll Div  
             <div id="scroll">
                  heading 
                 <h1 class="heading nunitoHead">
@@ -70,44 +71,57 @@
 
             <div class="content" id="show-map">
                 <!-- <button onclick="startMap()">Search </button> -->
-                 <div class="mapContainer" id="mapContainer"> 
+                <div class="mapContainer" id="mapContainer">
                     <div id="map"></div>
-                 </div> 
+                </div>
 
                 <!-- The Modal -->
                 <div id="myModal" class="modal">
 
-                <!-- Modal content -->
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <h3> Make a booking for New Farm Park Gazeebo </h3>
-                <form class="booking-container">
-                    <label>Name</label>
-                    <input type="text" name="space">
-                    <br>
-                    <label>Email</label>
-                    <input type="text" name="space">
-                    <br>
-                    <label>Phone no.</label>
-                    <input type="text" name="space">
-                    <br>
-                    <label>Date</label>
-                    <input type="date" />
-                    <br>
-                    <label>Time</label>
-                    <input list="timeslot" name="timeslot">
-                      <datalist id="timeslot">
-                        <option value="1PM - 2PM">
-                        <option value="2PM - 3PM">
-                        <option value="3PM - 4PM">
-                        <option value="4PM - 5PM">
-                      </datalist>
-                    <br>
-                    <button>
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h3> Make a booking for New Farm Park Gazeebo </h3>
+                        <form class="booking-container">
+                            <div class="mod-div">
+                                <label for="mod-name">Name</label>
+                                <input type="text" name="space" id="mod-name">
+                            </div>
+                            <br>
+                            <div class="mod-div">
+                                <label for="mod-email">Email</label>
+                                <input type="text" name="space" id="mod-email">
+                            </div>
+
+                            <br>
+                            <div class="mod-div">
+                                <label for="mod-phone">Phone no.</label>
+                                <input type="text" name="space" class="mod-phone">
+                            </div>
+                            <br>
+                            <div class="mod-div">
+                                <label for="mod-date">Date</label>
+                                <input type="date" class="mod-date" />
+                            </div>
+
+                            <br>
+                            <div class="mod-div">
+                                <label>Time</label>
+                                <input list="timeslot" name="timeslot">
+                                <datalist id="timeslot">
+                                    <option value="1PM - 2PM"></option>
+                                    <option value="2PM - 3PM"></option>
+                                    <option value="3PM - 4PM"></option>
+                                    <option value="4PM - 5PM"></option>
+                                </datalist>
+                            </div>
+
+                            <br>
+                            <button>
                         Book place
                     </button>
-                </form>
-                </div>
+                        </form>
+                    </div>
 
                 </div>
 
@@ -119,7 +133,6 @@
     </div>
 
     <script type="text/javascript">
-
         function scrollMap() {
             $('html, body').animate({
                 scrollTop: $("#map").offset().top
@@ -131,47 +144,47 @@
                 scrollTop: $(".content").offset().top
             }, 2000);
         }
-        $(document).ready(()=>{
+        $(document).ready(() => {
             startMap();
         })
-</script>
+    </script>
 
-<script>
-    // Get the modal
-    var modal = document.getElementById('myModal');
-    var grad = document.getElementById('gradient');
-    
-    var mapContainer = document.getElementById('mapContainer');
+    <script>
+        // Get the modal
+        var modal = document.getElementById('myModal');
+        var grad = document.getElementById('gradient');
 
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
+        var mapContainer = document.getElementById('mapContainer');
 
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
-        modal.style.display = "none";
-        grad.style.display = "none";
-    }
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
 
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-        if (event.target == modal) {
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
             modal.style.display = "none";
             grad.style.display = "none";
         }
-    }
-</script>
 
-<script>
-function openNav() {
-    document.getElementById("filter-component").style.width = "250px";
-    document.getElementById("show-map").style.marginLeft = "250px";
-}
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+                grad.style.display = "none";
+            }
+        }
+    </script>
 
-function closeNav() {
-    document.getElementById("filter-component").style.width = "0";
-    document.getElementById("show-map").style.marginLeft= "0";
-}
-</script>
+    <script>
+        function openNav() {
+            document.getElementById("filter-component").style.width = "250px";
+            document.getElementById("show-map").style.marginLeft = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("filter-component").style.width = "0";
+            document.getElementById("show-map").style.marginLeft = "0";
+        }
+    </script>
 </body>
 
 </html>
