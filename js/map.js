@@ -38,7 +38,7 @@ function startMap() {
       */
     async function getFeatures(loc, map) {
 
-      // console.log(loc); 
+
       //TODO Make an object/array of urls of the data sets to parse, then iterate
     
       var url = "./data/WiFi-dataset-Open-data.csv";
@@ -255,6 +255,12 @@ function startMap() {
          id: key
        });
 
+       if (marker.id == 'clickable') {
+        marker.addListener('click', function() {
+          console.log ('clicked');
+        });
+       }
+
       //  console.log('HERE IS THE MARKER %o', marker);
       //  }
      }
@@ -431,8 +437,6 @@ function startMap() {
         lat: venueArr[venue].lat,
         lng: venueArr[venue].lng
       }; 
-      console.log(venueArr[venue]);
-      console.log(location);
 
       addCustomMarker(location, map, 'clickable', './assets/location-pin.png');
     }
