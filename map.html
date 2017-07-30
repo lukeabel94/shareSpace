@@ -78,7 +78,7 @@
                 <div class="modal-content">
                     <span class="close">&times;</span>
                     <h3> Make a booking for New Farm Park Gazeebo </h3>
-                    <form action="search.php" class="booking-container">
+                <form class="booking-container">
                    <br><br>
                     <label>Name</label>
                     <input type="text" name="space">
@@ -93,7 +93,13 @@
                     <input type="date" />
                     <br><br>
                     <label>Time</label>
-                    <input type="text" name="space" placeholder="space">
+                    <input list="timeslot" name="timeslot">
+                      <datalist id="timeslot">
+                        <option value="1PM - 2PM">
+                        <option value="2PM - 3PM">
+                        <option value="3PM - 4PM">
+                        <option value="4PM - 5PM">
+                      </datalist>
                     <br><br>
                     <button>
                         Book place
