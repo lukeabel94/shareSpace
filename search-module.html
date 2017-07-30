@@ -5,33 +5,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="css/eddie.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="filter-component">
+        <!-- Text that just says "filter'" -->
         <div id="filter-head">
-            <svg></svg>
+            <div class="filter-head-content">
+                <p>Filter</p>
+            <p>X</p>
+            </div>
+            
         </div>
+
+        <!-- Nearby Infrastructure  -->
         <div id="filter-near">
+            <!-- WIFI  -->
             <div class="infra-div">
                 <svg></svg>
                 <span></span>
             </div>
+
+            <!-- BUS STOPS  -->
             <div class="infra-div">
                 <svg></svg>
                 <span></span>
             </div>
+
+            <!-- CITY CATS  -->
             <div class="infra-div">
                 <svg></svg>
                 <span></span>
             </div>
+
+            <!-- WATER TAPS  -->
             <div class="infra-div">
                 <svg></svg>
                 <span></span>
             </div>
+
+            <!-- CITY CYCLES  -->
             <div class="infra-div">
                 <svg></svg>
                 <span></span>
             </div>
+        </div>
+
+        <div id="typeOfVenue">
+
+            <label for="hall" class="venues">Community hall</label>
+            <input type="checkbox" name="hall">
+
+            <label for="garden" class="venues">Community garden</label>
+            <input type="checkbox" name="garden">
+
+            <label for="library" class="venues">library</label>
+            <input type="checkbox" name="library">
+
+            <label for="park" class="venues">Park</label>
+            <input type="checkbox" name="park">
+
         </div>
     </div>
 </body>
