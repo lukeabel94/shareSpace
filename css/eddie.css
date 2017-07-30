@@ -83,11 +83,33 @@ input:focus{
     color: #FFF;
 }
 
-<<<<<<< HEAD
 .booking-container{
-    
-=======
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    height: 60vh;
+    width:100vh;
+    color: #444;    
+    font-family: 'Nunito Sans', sans-serif;
 
+}
+
+.booking-container label{
+    color: #444;
+}
+.booking-container input{
+    color: #444;
+    background: none;
+    border: none;
+    border-bottom: 3px solid #444;
+    padding-bottom: 2px;
+    caret-color: #444;
+}
+.booking-container button{
+    background-color: #8EC5FC;
+    border: none;
+    color: white;
+    border-radius: 4px;;
+}
 /*  Map CSS  */
 .mapContainer{
     height: 100vh;
@@ -98,5 +120,4 @@ input:focus{
     margin: 0;
     padding: 0;
     top: 0; left:0;
->>>>>>> 08bf56f3ecc5ed4c39d9d26016e20e97e1cb3d31
 }
