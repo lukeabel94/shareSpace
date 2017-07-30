@@ -71,23 +71,46 @@ function startMap() {
           "./data/FERRYTERMINAL20170713.csv",
           "./data/community-halls-information-and-locationf.csv",
           "./data/CBD-bike-racks.csv",
-          "./data/AIM---PARKS---OPEN-DATA---Public-Drinking-Fountain-Taps---DATA-TO-PUBLISH---DEC-2016.csv",
-          "./data/Open-Data---AM---datasetparkfacilties.csv"
+          // "./data/Open-Data---AM---datasetparkfacilties.csv",
+          // "./data/AIM---PARKS---OPEN-DATA---Public-Drinking-Fountain-Taps---DATA-TO-PUBLISH---DEC-2016.csv"
+          
         ];
 
+      // For each set of data
       for (var url in urlArr) {
           getFileFromURL(urlArr[url])
             .then((res) => {
               console.log('done %o',res);
               
+              let arr = res.data
+
+              let filteredObj = {};
+
               // Play with the data
+               
+              // get the key of the lat and long
+              let latKey = getObjectKey(arr[0], 'Latitude');
+              let lngKey = getObjectKey(arr[0], 'Longitude');
+              
+              // start at index 1
+              var key = 1;
+
+              // If lat long is within 2km, starting at the array 1
+              for (key in arr) {
+                // If the distance between the current location and the current object
+                if (haversine(loc.lat, loc.lng, arr[key][latKey], arr[key][lngKey]) <= 2) {
+                  console.log('Haver Found: %o', arr[key]);
+                } else {
+                }
+              }
+              console.log('done');
+
+
               if (res.data[url][6] = "THE GABBA") {
                 
                 //TODO make function that traverses array
                 
                 console.log(res.data[url]);
-
-                console.log(haversine(loc.lat, loc.lng, res.data[url][9], res.data[url][10]));
               }
               // newObj = haversine(pos.lat, pos.lng, res.data)
               // console.log(newObj);
@@ -222,3 +245,20 @@ function startMap() {
        var c = 2 * Math.asin(Math.sqrt(a));
        return R * c;
 }
+
+  /**
+   * get the key of an object where the property is the property input
+   * @param {Object} object 
+   * @param {String} property 
+   */
+  function getObjectKey(object, property) {
+              // Get the key of the lat and long
+              
+              // For each key in the object
+              for (var key in object) {
+                if (object[key].toUpperCase() == property.toUpperCase()) {
+                  console.log('key found: ' + key);
+                  return key;
+                }
+              } 
+  }
