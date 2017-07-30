@@ -274,6 +274,7 @@ img:hover {
     padding: 20px 4vh;
     width: 60%; /* Could be more or less, depending on screen size */
     border-radius: 5px;
+    height: 500px;
 }
 .modal-content h3{
     text-align: center;
@@ -335,13 +336,13 @@ img:hover {
 }
 
 @media only screen and (max-width: 600px){
-   #images {
-    width: 80%;
-}
+    #images {
+        width: 80%;
+    }
 
-.modalImage {
-    width: 100%;
-}
+    .modalImage {
+        width: 100%;
+    }
 }
 
 .logo {
@@ -391,19 +392,34 @@ img:hover {
 }
 
 .booking-container{
-    width: 50%;
+    width: 40%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     text-align: left;
+    margin-top: 50px;
 }
 .booking-container button{
     text-align: center;
+    margin: 0 auto;
+    margin-top: 50px;
+
+}
+.mod-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .mod-div label{
     width: 300px;
-    margin-right: 10px;
+}
+.mod-div input{
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    outline: none;
+    width: 200px;
+    border-bottom: 1px solid black;
 }
 
 /* The box */
