@@ -3,7 +3,7 @@ var pointMarker;
 function startMap() {
        map = new google.maps.Map(document.getElementById('map'), {
          center: {lat: -27.4698, lng: 153.0513},
-         zoom: 14
+         zoom: 18
        });
 
        //load geoJson info
@@ -27,16 +27,9 @@ function startMap() {
       */
      async function addFeatures(loc, map) {
 
-      addVenues();
+      addVenues(map);
       //  var featureArray = getFeatures(loc);
       var featureArray = await getFeatures(loc, map);
-
-      // console.log("feat array");
-      // console.log(featureArray);
-        // .then((res) => {
-        //   var featureArray = res;
-        //   console.log('features %o', featureArray);
-        // })
      }
 
      /**
@@ -67,8 +60,7 @@ function startMap() {
       for (var url in urlArr) {
           getFileFromURL(urlArr[url])
             .then((res) => {
-              console.log('done %o',res);
-              
+             
               let arr = res.data
               
               var objArr = [];
@@ -77,7 +69,7 @@ function startMap() {
               var count = 0;
 
               var dataType = getDataType(arr[0]);
-              console.log(dataType);
+
               // Play with the data
                
               // get the key of the lat and long
@@ -96,7 +88,7 @@ function startMap() {
                 var thisLng = arr[key][lngKey];
 
                 // If the distance between the current location and the current object is less than 2 km
-                if (haversine(loc.lat, loc.lng, thisLat, thisLng) <= 2) {
+                if (haversine(loc.lat, loc.lng, thisLat, thisLng) <= 1) {
                   var newObj = {
                     // type is the type gotten at this beginning of the array traversal
                     key: count,
@@ -134,7 +126,7 @@ function startMap() {
               // console.log(newObj);
 
               // Add the markers - reset filteredObjArr
-              console.log (filteredObjArr);
+
               
               
               objArr.push(filteredObjArr);
@@ -224,6 +216,7 @@ function startMap() {
      }
 
      function addCustomMarker(location, map, key, url) {
+
       //  if(key < 10) {
       //  console.log('marker location: %o, %o', location, key);
 
@@ -236,6 +229,15 @@ function startMap() {
         //   anchor: new google.maps.Point(0, 32)
         // };
 
+        if (key == 'clickable') {
+          var image = {
+          url: url,
+          size: new google.maps.Size(100, 100),
+          origin: new google.maps.Point(0, 0),
+          anchor: new google.maps.Point(17, 34),
+          scaledSize: new google.maps.Size(60, 60)
+        };
+        } else {
        var image = {
           url: url,
           size: new google.maps.Size(71, 71),
@@ -243,6 +245,7 @@ function startMap() {
           anchor: new google.maps.Point(17, 34),
           scaledSize: new google.maps.Size(30, 30)
         };
+     }
 
        var marker = new google.maps.Marker({
          position: location,
@@ -335,7 +338,7 @@ function startMap() {
    * @param {Object} titleObj 
    */
   function getDataType(titleArr) {
-    console.log('getting the data type %o', titleArr);
+
     
     var title = titleArr[0];
 
@@ -363,7 +366,6 @@ function startMap() {
   function getIconURL(type) {
     var iconBase = './assets/';
     var iconFile;
-    console.log(type);
 
     switch(type) {
       case 'citycat':
@@ -385,7 +387,55 @@ function startMap() {
   /**
    * A function to add in some bookable venues
    */
-  function addVenues() {
+  function addVenues(map) {
+    var venueArr = [
+      {
+        park: 'NEW FARM PARK',
+        type: 'PICNIC BENCH/TABLE',
+        description: 'Picnic table on slab',
+        lat: -27.47061789,
+        lng: 153.0528216
+      },
+      {
+        park: 'NEW FARM PARK',
+        type: 'PICNIC BENCH/TABLE',
+        description: 'Picnic Setting - (Go for Gold)',
+        lat: -27.47051454,
+        lng: 153.0529955
+      },
+      {
+        park: 'NEW FARM PARK',
+        type: 'ROTUNDA/GAZEBO',
+        description: 'Wedding Rotunda (Heitage Bandstand)',
+        lat: -27.47021743,
+        lng: 153.0525265
+      },
+      {
+        park: 'NEW FARM PARK',
+        type: 'SHADE STRUCTURE',
+        description: 'Steel posts & Rainbow Z16 fabric - 10.5m x 3.5m',
+        lat: -27.4711841,
+        lng: 153.0518929
+      },
+      {
+        park: 'NEW FARM PARK',
+        type: 'PICNIC BENCH/TABLE',
+        description: 'NUVOE',
+        lat: -27.47108327,
+        lng: 153.0518929
+      }
+    ];
 
+    for (venue in venueArr) {
+      var location = {
+        lat: venueArr[venue].lat,
+        lng: venueArr[venue].lng
+      }; 
+      console.log(venueArr[venue]);
+      console.log(location);
+
+      addCustomMarker(location, map, 'clickable', './assets/location-pin.png');
+    }
+    
 
   }
