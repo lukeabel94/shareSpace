@@ -117,6 +117,9 @@ function startMap() {
                     details: arr[key]
                   };
 
+
+                  var iconURL = getIconURL(newObj.type);
+
                   count ++;
 
                   // the location as an object - after converting to numbers
@@ -130,6 +133,7 @@ function startMap() {
 
                   // console.log('LOCATION %o', location);
                   // Add a marker
+
                   addCustomMarker(location, map, newObj.key);
 
                   
@@ -227,21 +231,28 @@ function startMap() {
       //  if(key < 10) {
        console.log('marker location: %o, %o', location, key);
 
+       // The image for the marker
         var image = {
-          url: './img/icon-wifi-128.png',
+          url: './assets/bus.svg',
           // This marker is 20 pixels wide by 32 pixels high.
           size: new google.maps.Size(20, 32),
-          // // The origin for this image is (0, 0).
           origin: new google.maps.Point(0, 0),
-          // // The anchor for this image is the base of the flagpole at (0, 32).
           anchor: new google.maps.Point(0, 32)
+        };
+
+       var image = {
+          url: './assets/Artboard 40.png',
+          size: new google.maps.Size(71, 71),
+          origin: new google.maps.Point(0, 0),
+          anchor: new google.maps.Point(17, 34),
+          scaledSize: new google.maps.Size(30, 30)
         };
 
        var marker = new google.maps.Marker({
          position: location,
          map: map,
-        //  icon: image,
-        //  icon: './img/icon-wifi-128.png',
+        //  icon: './assets/Artboard 40.png',
+         icon: image,
          id: key
        });
 
@@ -330,5 +341,39 @@ function startMap() {
    * Get the title of the dataset
    */
   function getDataSetTitle() {
+
+  }
+
+  /**
+   * Get the data type from the title object
+   * @param {Object} titleObj 
+   */
+  function getDataType(titleObj) {
+
+  }
+
+  /**
+   * Get the icon url by the type of the data
+   */
+  function getIconURL(type) {
+    var iconBase = './assets/';
+    var iconFile;
+
+    switch(type) {
+      case 'citycat':
+        return iconBase + 'citycat.svg';
+      case 'citycycle':
+        return iconBase + 'citycycle.svg';
+      case 'bus':
+        return iconBase + 'citycat.svg';
+      case 'watertap':
+        return iconBase + 'citycycle.svg';
+      case 'library':
+        return iconBase + 'citycat.svg';
+      case 'wifi':
+        return iconBase + 'citycycle.svg';
+    }
+
+
 
   }
