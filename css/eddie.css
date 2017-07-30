@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito+Sans:300,400');
 
+html{
+    height: 100% !important;
+    width: 100% !important;
+}
+
 body{
     background-image:linear-gradient(60deg, #FFC3FC, #6AB2FC);
     height: 100%;
@@ -82,6 +87,7 @@ input:focus{
     border: 3px solid rgba(255,255,255,1);
     color: #FFF;
 }
+<<<<<<< HEAD
 
 .booking-container{
     background-color: rgba(255, 255, 255, 0.9);
@@ -121,3 +127,5 @@ input:focus{
     padding: 0;
     top: 0; left:0;
 }
+=======
+>>>>>>> bdac0f0988fe40ac5bdc9755d3517d9688112b14
